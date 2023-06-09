@@ -4,8 +4,16 @@
 
 export function getNumbersWithSquareRoots(max) {
   // Your code goes here...
-
+  const sqrRootArr = [];
+  for (let n = 0; n < max; n++) {
+    const squareRoot = Math.sqrt(n);
+    if (Number.isInteger(squareRoot)) {
+      sqrRootArr.push(n);
+    }
+  }
+  return sqrRootArr;
 }
+getNumbersWithSquareRoots(200);
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-2"

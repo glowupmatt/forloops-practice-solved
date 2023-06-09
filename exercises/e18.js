@@ -4,7 +4,19 @@
 // joinToString(['a', 'b', 'c'], '-') => 'a-b-c'
 // NOTE: You can NOT use the array.join(), array.toString(), and array.replace() methods in your code
 
-export function joinToString(array, separator) {}
+export function joinToString(array, separator) {
+  let stringMe = "";
+  let separateMe;
+  for (let i = 0; i < array.length; i++) {
+    if (i !== array.length - 1) {
+      separateMe = array[i] + separator;
+    } else {
+      separateMe = array[i];
+    }
+    stringMe += separateMe;
+  }
+  return stringMe;
+}
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-18"
