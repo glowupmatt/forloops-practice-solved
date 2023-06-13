@@ -6,17 +6,38 @@
 
 export function getClientsWithWrongBalance(array) {
   // Your code goes here...
-  const clientsWithWrongBalance = array.filter((client) => {
-    const withdrawalTotal = client.withdrawals
-      ? client.withdrawals.reduce((acc, val) => acc + val, 0)
-      : 0;
-    const depositTotal = client.deposits
-      ? client.deposits.reduce((acc, val) => acc + val, 0)
-      : 0;
+  let clientsWithWrongBalance = [];
+  for (let i = 0; i < array.length; i++) {
+    let withdrawalTotal;
+    let depositTotal;
+    let withdrawal = array[i].withdrawals;
+    let withdrawalCount = 0;
+    if (withdrawal) {
+      for (let j = 0; j < withdrawal.length; j++) {
+        withdrawalCount += withdrawal[j];
+      }
+    } else {
+      0;
+    }
+    withdrawalTotal = withdrawalCount;
+
+    let deposit = array[i].deposits;
+    let depositCount = 0;
+    if (deposit) {
+      for (let k = 0; k < deposit.length; k++) {
+        depositCount += deposit[k];
+      }
+    } else {
+      0;
+    }
+    depositTotal = depositCount;
+
     const calculatedTotal = depositTotal - withdrawalTotal;
-    const isValidBalance = client.balance === calculatedTotal;
-    return !isValidBalance;
-  });
+    const isValidBalance = array[i].balance === calculatedTotal;
+    if (!isValidBalance) {
+      clientsWithWrongBalance.push(array[i]);
+    }
+  }
   return clientsWithWrongBalance;
 }
 

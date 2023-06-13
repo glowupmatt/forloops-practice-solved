@@ -5,9 +5,11 @@
 
 export function getClientWithNoMoney(array) {
   // Your code goes here...
-  const nameArray = array.map((i) => (i.balance <= 0 ? i.name : null));
-  const sortedArray = nameArray.filter((i) => i !== null);
-  return sortedArray;
+  const nameArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].balance <= 0) nameArray.push(array[i].name);
+  }
+  return nameArray;
 }
 
 // === TEST YOURSELF ===

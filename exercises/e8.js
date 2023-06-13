@@ -5,17 +5,18 @@
 
 export function getClientWithGreatestBalance(array) {
   // Your code goes here...
-  const clientArray = [];
 
-  array.forEach((person) => {
-    if (person.balance > 0) {
-      clientArray.push(person);
+  let largest = array[1].balance;
+  let newArr = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].balance > largest) {
+      largest = array[i];
     }
-  });
+  }
 
-  const sortedClientArray = clientArray.sort((a, b) => b.balance - a.balance);
-
-  return sortedClientArray.slice(0, 1);
+  newArr.push(largest);
+  return newArr;
 }
 
 // === TEST YOURSELF ===

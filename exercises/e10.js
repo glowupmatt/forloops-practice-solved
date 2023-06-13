@@ -6,12 +6,15 @@
 export function getClientsWithLetterInName(array, letter) {
   // Your code goes here...
   const clientArray = [];
-  array.forEach((person) => {
-    const lowercaseName = person.name.toLowerCase();
-    if (lowercaseName.includes(letter)) {
-      clientArray.push(person.name);
+  for (let i = 0; i < array.length; i++) {
+    let names = array[i].name.toLowerCase();
+    for (let j = 0; j < names.length; j++) {
+      if (names[j] === letter) {
+        clientArray.push(array[i].name);
+        break;
+      }
     }
-  });
+  }
   return clientArray;
 }
 

@@ -4,21 +4,23 @@
 // getAllAccountsWithSumsOfDepositsLess2000(bankAccounts) => [3432, 43242.34, 23432]
 
 export function getAllAccountsWithSumsOfDepositsLess2000(array) {
-  const depositsArray = [];
-
   // Your code goes here...
-  array.forEach((client) => {
-    if (client.deposits) {
-      const total = client.deposits.reduce((a, b) => {
-        return a + b;
-      }, 0);
-      if (total < 2000) {
-        depositsArray.push(client);
+  const depositsArray = [];
+  for (let i = 0; i < array.length; i++) {
+    let deposit = array[i].deposits;
+    if (deposit) {
+      let sum = 0;
+      for (let j = 0; j < deposit.length; j++) {
+        sum += deposit[j];
+      }
+      if (sum < 2000) {
+        depositsArray.push(array[i]);
       }
     } else {
-      depositsArray.push(client);
+      depositsArray.push(array[i]);
     }
-  });
+  }
+
   return depositsArray;
 }
 
