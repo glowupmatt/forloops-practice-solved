@@ -5,13 +5,19 @@
 
 export function getAllDepositsGreaterThanOneHundred(array) {
   // Your code goes here...
-  const getDepositsArr = [];
-  array.forEach((deposit) => {
-    getDepositsArr.push(deposit.deposits);
-  });
-  const flatDepositsArr = getDepositsArr.flat();
-  const filteredArr = flatDepositsArr.filter((item) => item > 100);
-  return filteredArr;
+  let totalDepositsArr = [];
+  for (let i = 0; i < array.length; i++) {
+    let getDepositsArr;
+    if (array[i].deposits) {
+      getDepositsArr = array[i].deposits;
+      for (let j = 0; j < getDepositsArr.length; j++) {
+        if (getDepositsArr[j] > 100) {
+          totalDepositsArr.push(getDepositsArr[j]);
+        }
+      }
+    }
+  }
+  return totalDepositsArr;
 }
 
 // === TEST YOURSELF ===
